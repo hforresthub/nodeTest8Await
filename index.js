@@ -70,3 +70,24 @@ const getSecondUserDataAsync = async () => {
 }
 
 getSecondUserDataAsync()
+
+
+const promiseToDoSomething = () => {
+	return new Promise(resolve => {
+		setTimeout(() => resolve('I did something'), 10000)
+	})
+}
+
+const watchOverOther = async () => {
+	const something = await promiseToDoSomething()
+	return something + '\nand I watched'
+}
+
+const watchInception = async () => {
+	const something = await watchOverOther()
+	return something + '\nand I watched too'
+}
+
+watchInception().then(res => {
+	console.log(res);
+})
